@@ -1,5 +1,8 @@
 package GUI;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import TreeModel.TreeMap;
 
 public class TestConsolePrint {
@@ -9,8 +12,24 @@ public class TestConsolePrint {
 	}
 
 	public static void main(String[] args) {
-		TreeMap map = new TreeMap(40, 0.8, 5);
-		System.out.println(map.getNetwork().getSize());
+		int test1;
+		double test2;
+		short test3;
+		/*
+		test1= Integer.parseInt((JOptionPane.showInputDialog("Please input L Val for test : ")));
+		test2= Double.parseDouble((JOptionPane.showInputDialog("Please input P Val for test : ")));
+		test3= Short.parseShort((JOptionPane.showInputDialog("Please input K Val for test : ")));
+		*/
+		test1 = 400;
+		test2 = 0.2;
+		test3 = 4;
+		long start = System.currentTimeMillis();
+		TreeMap map = new TreeMap(test1, test2, test3);
+		long elapsedTime = System.currentTimeMillis() - start;
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		int size = map.getNetwork().getSize();
+		JOptionPane.showMessageDialog(frame, "Size: " + size + " Time: " + elapsedTime);
 	}
 
 }

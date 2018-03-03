@@ -23,11 +23,11 @@ public double hubbingProbability; //just a container to later statistics
 		kNearestHubs = neighbours;
 		hubbingProbability = prob;
 		map = new HubList();
-		
+		long start = System.currentTimeMillis();
 		for (int ii = 0; ii < siz; ii++){
 			for (int jj = 0; jj < siz; jj++){
 				for (int zz = 0; zz < siz; zz++){
-					if (Math.random() >= 1 - prob){
+					if (Math.random() <= prob){
 						map.add(new NetworkHub((short)ii, (short)jj, (short)zz));
 						try{
 							cube[ii][jj][zz] = (int) (map.getSize());
@@ -44,6 +44,8 @@ public double hubbingProbability; //just a container to later statistics
 				}
 			}
 		}
+		System.out.println(System.currentTimeMillis() - start);
+		start = System.currentTimeMillis();
 		//Generating k-nearest neighbours for given graph defined by HubList map and cube keeping indexes
 		for (int listIndex = 0; listIndex < map.size(); listIndex++){
 			loopCounter = 1;
@@ -78,6 +80,7 @@ public double hubbingProbability; //just a container to later statistics
 										try{
 											//map.get(listIndex).addNeighbour(map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1)); Again "old" part of the code
 											map.get(listIndex).addToNeighbourIndexesList(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
+											map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).addToNeighbourIndexesList(listIndex);
 											tmpNeighboursCount = tmpNeighboursCount + 1;
 										}
 										catch(NullPointerException yyy){
@@ -99,6 +102,7 @@ public double hubbingProbability; //just a container to later statistics
 			loopCounter = loopCounter + 1;
 			}
 		}
+		System.out.println(System.currentTimeMillis() - start);
 	}
 	
 	public HubList getNetwork(){
