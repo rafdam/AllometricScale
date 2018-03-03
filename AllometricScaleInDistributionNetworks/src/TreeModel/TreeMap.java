@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class TreeMap {
 public HubList map; // 3d matrix of hubs dependent on probability
+public EdgeList edges; // list containing all the edges with their weights
 public int kNearestHubs; // value defining with how many hubs each hub gonna be connected 
 private int size; // true / false cube representing if the hub is in the spot or not
 public double hubbingProbability; //just a container to later statistics
@@ -23,6 +24,7 @@ public double hubbingProbability; //just a container to later statistics
 		kNearestHubs = neighbours;
 		hubbingProbability = prob;
 		map = new HubList();
+		edges = new EdgeList();
 		long start = System.currentTimeMillis();
 		for (int ii = 0; ii < siz; ii++){
 			for (int jj = 0; jj < siz; jj++){
@@ -81,6 +83,7 @@ public double hubbingProbability; //just a container to later statistics
 											//map.get(listIndex).addNeighbour(map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1)); Again "old" part of the code
 											map.get(listIndex).addToNeighbourIndexesList(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
 											map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).addToNeighbourIndexesList(listIndex);
+											edges.add(new Edge(listIndex, cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1, map));
 											tmpNeighboursCount = tmpNeighboursCount + 1;
 										}
 										catch(NullPointerException yyy){

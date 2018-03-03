@@ -9,6 +9,8 @@ private double weight; //First the edge weight gonna be calculated just by eucli
 		weight = Math.sqrt((list.get(hub1Adress).getxCartCoord() - list.get(hub2Adress).getxCartCoord()) ^ 2
 				+ (list.get(hub1Adress).getyCartCoord() - list.get(hub2Adress).getyCartCoord()) ^ 2
 				+ (list.get(hub1Adress).getzCartCoord() - list.get(hub2Adress).getzCartCoord()) ^ 2);
+		startHubAdress = hub1Adress;
+		endHubAdress = hub2Adress;
 	}
 	
 	public int getStartHubAdress(){

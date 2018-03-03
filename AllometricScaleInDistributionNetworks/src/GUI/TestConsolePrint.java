@@ -20,8 +20,8 @@ public class TestConsolePrint {
 		test2= Double.parseDouble((JOptionPane.showInputDialog("Please input P Val for test : ")));
 		test3= Short.parseShort((JOptionPane.showInputDialog("Please input K Val for test : ")));
 		*/
-		test1 = 400;
-		test2 = 0.2;
+		test1 = 100;
+		test2 = 1;
 		test3 = 4;
 		long start = System.currentTimeMillis();
 		TreeMap map = new TreeMap(test1, test2, test3);
