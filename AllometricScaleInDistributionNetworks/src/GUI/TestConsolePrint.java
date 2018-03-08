@@ -21,8 +21,8 @@ public class TestConsolePrint {
 		test3= Short.parseShort((JOptionPane.showInputDialog("Please input K Val for test : ")));
 		*/
 		test1 = 100;
-		test2 = 1;
-		test3 = 4;
+		test2 = 0.70;
+		test3 = 5;
 		long start = System.currentTimeMillis();
 		TreeMap map = new TreeMap(test1, test2, test3);
 		long elapsedTime = System.currentTimeMillis() - start;
@@ -30,6 +30,10 @@ public class TestConsolePrint {
 		frame.setVisible(true);
 		int size = map.getNetwork().getSize();
 		JOptionPane.showMessageDialog(frame, "Size: " + size + " Time: " + elapsedTime);
+		System.out.println("---------------------------------------------");
+		for (int ii = 0; ii < size; ii++){
+			System.out.println(map.getNetwork().get(ii).getNeighbourIndexesList().size());
+		}
 	}
 
 }

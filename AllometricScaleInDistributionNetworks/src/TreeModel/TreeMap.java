@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class TreeMap {
-public HubList map; // 3d matrix of hubs dependent on probability
-public EdgeList edges; // list containing all the edges with their weights
-public int kNearestHubs; // value defining with how many hubs each hub gonna be connected 
+private HubList map; // 3d matrix of hubs dependent on probability
+private EdgeList edges; // list containing all the edges with their weights
+private int kNearestHubs; // value defining with how many hubs each hub gonna be connected 
 private int size; // true / false cube representing if the hub is in the spot or not
 public double hubbingProbability; //just a container to later statistics
 	public TreeMap(int siz, double prob, int neighbours) {
@@ -16,7 +16,7 @@ public double hubbingProbability; //just a container to later statistics
 		int tmpZCoord;
 		int loopCounter;
 		int tmpNeighboursCount = 0;
-		int maxVal = (siz * siz * siz) - 1;
+		int maxVal = (siz * siz * siz) + 1;
 		int hubIndex;
 		int[][][] cube = new int[siz][siz][siz];
 		
@@ -46,9 +46,9 @@ public double hubbingProbability; //just a container to later statistics
 				}
 			}
 		}
-		System.out.println(System.currentTimeMillis() - start);
+		//System.out.println(System.currentTimeMillis() - start);
 		start = System.currentTimeMillis();
-		//Generating k-nearest neighbours for given graph defined by HubList map and cube keeping indexes
+		//Generating k-nearest neighbours for given graph defined by HubList map and cube[][][] keeping indexes
 		for (int listIndex = 0; listIndex < map.size(); listIndex++){
 			loopCounter = 1;
 			try{
@@ -62,7 +62,7 @@ public double hubbingProbability; //just a container to later statistics
 			tmpZCoord = map.get(listIndex).getzCartCoord();
 			//Looping over loopCounter lvl ring around given Hub
 			while (tmpNeighboursCount < (int)(neighbours)){
-				for (int ii = -loopCounter; ii <= loopCounter ;ii ++){
+				for (int ii = -loopCounter; ii <= loopCounter; ii ++){
 					if (tmpNeighboursCount == neighbours){
 						break;
 					}
@@ -79,17 +79,23 @@ public double hubbingProbability; //just a container to later statistics
 								|| jj == -loopCounter || jj == loopCounter  
 								|| zz == -loopCounter || zz == loopCounter){
 									if(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] != maxVal){
-										try{
-											//map.get(listIndex).addNeighbour(map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1)); Again "old" part of the code
-											map.get(listIndex).addToNeighbourIndexesList(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
-											map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).addToNeighbourIndexesList(listIndex);
-											edges.add(new Edge(listIndex, cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1, map));
-											tmpNeighboursCount = tmpNeighboursCount + 1;
+										if (map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).getNeighbourIndexesList().size() >= (int) neighbours){
+											//next minicube
 										}
-										catch(NullPointerException yyy){
-											//Shouldn't even be possible BUT just in case xD
-											System.out.println("keksimus maksimus");
+										else{
+											try{	
+												//System.out.println(map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).getNeighbourIndexesList().size());
+												map.get(listIndex).addToNeighbourIndexesList(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
+												map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).addToNeighbourIndexesList(listIndex);
+												//edges.add(new Edge(listIndex, cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1, map));
+												tmpNeighboursCount = tmpNeighboursCount + 1;
+												//System.out.println("XD");
+											}
+											catch(NullPointerException yyy){
+												//Shouldn't even be possible BUT just in case xD
+											}
 										}
+										
 									}
 									else{
 										//do nothing and go for another miniCube
@@ -103,17 +109,25 @@ public double hubbingProbability; //just a container to later statistics
 					}
 				}
 			loopCounter = loopCounter + 1;
+			if (loopCounter > siz){
+				System.out.println("Koniec Kostki, ostatni wierzchołek");
+				break;
 			}
+			}
+			//System.out.println(2);
 		}
-		System.out.println(System.currentTimeMillis() - start);
+		//System.out.println(System.currentTimeMillis() - start);
 	}
 	
 	public HubList getNetwork(){
 		return map;
 	}
+	
 	public int getSize(){
 		return size;
 	}
 	
-
+	public EdgeList getList(){
+		return edges;
+	}
 }
