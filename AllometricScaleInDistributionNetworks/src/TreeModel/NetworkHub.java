@@ -7,7 +7,7 @@ public class NetworkHub {
 private short xCartCoord; // coordinates defined in cartesian metric system
 private short yCartCoord;
 private short zCartCoord;
-//private int activity; // value defining if the hub is actually active in tree or not
+private int level; // defines the level of the hub specified by spanning tree
 private ArrayList<NetworkHub> neighbourList; //list of nearest neighbours
 private ArrayList<Integer> neighbourIndexesList;
 	
@@ -15,6 +15,7 @@ private ArrayList<Integer> neighbourIndexesList;
 		xCartCoord = x;
 		yCartCoord = y;
 		zCartCoord = z;
+		level = 0;
 		neighbourList = new ArrayList<NetworkHub>();
 		neighbourIndexesList = new ArrayList<Integer>();
 	}
@@ -42,15 +43,12 @@ private ArrayList<Integer> neighbourIndexesList;
 	public void setzCartCoord(short zCartCoord) {
 		this.zCartCoord = zCartCoord;
 	}
-	/* "old" part of the code when I inserted actually objects instead of their adress in the hubList
-	public void addNeighbour(NetworkHub nH){
-		neighbourList.add(nH);
+	public void setLevel(int weight){
+		level = weight;
 	}
-	
-	public ArrayList<NetworkHub> getNeighbourList(){
-		return neighbourList;
+	public int getLevel(){
+		return level;
 	}
-	*/
 	public void addToNeighbourIndexesList(int index){
 		neighbourIndexesList.add(index);
 	}

@@ -22,7 +22,7 @@ private int weight; //First the edge weight gonna be calculated just by euclidea
 		return endHubAdress;
 	}
 	
-	public double getWeight(){
+	public int getWeight(){
 		return weight;
 	}
 }
