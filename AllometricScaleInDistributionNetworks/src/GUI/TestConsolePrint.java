@@ -3,6 +3,7 @@ package GUI;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import TreeModel.MinimalSpanningTree;
 import TreeModel.TreeMap;
 
 public class TestConsolePrint {
@@ -20,20 +21,21 @@ public class TestConsolePrint {
 		test2= Double.parseDouble((JOptionPane.showInputDialog("Please input P Val for test : ")));
 		test3= Short.parseShort((JOptionPane.showInputDialog("Please input K Val for test : ")));
 		*/
-		test1 = 100;
+		test1 = 3;
 		test2 = 0.70;
-		test3 = 5;
+		test3 = 6;
 		long start = System.currentTimeMillis();
 		TreeMap map = new TreeMap(test1, test2, test3);
+		MinimalSpanningTree tree = new MinimalSpanningTree(map.getNetwork(), 2);
 		long elapsedTime = System.currentTimeMillis() - start;
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
 		int size = map.getNetwork().getSize();
 		JOptionPane.showMessageDialog(frame, "Size: " + size + " Time: " + elapsedTime);
-		System.out.println("---------------------------------------------");
-		for (int ii = 0; ii < size; ii++){
-			System.out.println(map.getNetwork().get(ii).getNeighbourIndexesList().size());
-		}
+		//System.out.println("---------------------------------------------");
+		//for (int ii = 0; ii < size; ii++){
+		//	System.out.println(map.getNetwork().get(ii).getNeighbourIndexesList().size());
+		//}
 	}
 
 }

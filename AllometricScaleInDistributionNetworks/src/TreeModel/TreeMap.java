@@ -33,6 +33,7 @@ public double hubbingProbability; //just a container to later statistics
 						map.add(new NetworkHub((short)ii, (short)jj, (short)zz));
 						try{
 							cube[ii][jj][zz] = (int) (map.getSize());
+							System.out.println(ii + " " + jj + " " + zz);
 						}
 						catch(NullPointerException ee){
 							cube[ii][jj][zz] = maxVal;
@@ -87,12 +88,11 @@ public double hubbingProbability; //just a container to later statistics
 												//System.out.println(map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).getNeighbourIndexesList().size());
 												map.get(listIndex).addToNeighbourIndexesList(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
 												map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).addToNeighbourIndexesList(listIndex);
-												//edges.add(new Edge(listIndex, cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1, map));
+												System.out.println(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
 												tmpNeighboursCount = tmpNeighboursCount + 1;
-												//System.out.println("XD");
 											}
 											catch(NullPointerException yyy){
-												//Shouldn't even be possible BUT just in case xD
+												//Shouldn't even be possible BUT just in case 
 											}
 										}
 										
@@ -114,7 +114,7 @@ public double hubbingProbability; //just a container to later statistics
 				break;
 			}
 			}
-			//System.out.println(2);
+			System.out.println("+-+-+-+-+-+-+-");
 		}
 		//System.out.println(System.currentTimeMillis() - start);
 	}
