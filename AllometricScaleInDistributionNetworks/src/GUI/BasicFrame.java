@@ -14,7 +14,7 @@ public class BasicFrame extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	static TabbedPane tabbedPane;
 	public BasicFrame() throws HeadlessException {
 		super();
 		setSize(1300,900);
@@ -22,23 +22,11 @@ public class BasicFrame extends JFrame {
 		setTitle("Allometric Scalling in distribution networks");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		TabbedPane tabbedPane = new TabbedPane(); //pane with cards" Charges, Help..."
+		tabbedPane = new TabbedPane(); //pane with cards" Charges, Help..."
 		add(tabbedPane,"width 100%, height 100%");
 	}
-
-	public BasicFrame(GraphicsConfiguration arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
+	
+	public static TabbedPane getPane(){
+		return tabbedPane;
 	}
-
-	public BasicFrame(String arg0) throws HeadlessException {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-	}
-
-	public BasicFrame(String arg0, GraphicsConfiguration arg1) {
-		super(arg0, arg1);
-		// TODO Auto-generated constructor stub
-	}
-
 }

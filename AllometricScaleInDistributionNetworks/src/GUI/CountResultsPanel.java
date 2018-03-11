@@ -22,8 +22,9 @@ public class CountResultsPanel extends JPanel {
 		indexPanel = new AllometricIndexPanel();
 		add(chartPoints, "width 100%, height 60%, wrap");
 		add(indexPanel, "width 100%, height 40%");
-		
-		
-		
+	}
+	
+	public AllometricIndexPanel getIndexPanel(){
+		return indexPanel;
 	}
 }

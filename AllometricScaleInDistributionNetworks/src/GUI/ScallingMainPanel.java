@@ -22,4 +22,8 @@ public class ScallingMainPanel extends JPanel {
 		add(chart, "width 70%, height 100%");
 		add(results, "width 30%, height 100%");
 	}
+	
+	public CountResultsPanel getResults(){
+		return results;
+	}
 }
