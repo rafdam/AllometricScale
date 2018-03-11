@@ -3,6 +3,7 @@ package GUI;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+import TreeModel.IndexCalculus;
 import TreeModel.MinimalSpanningTree;
 import TreeModel.TreeMap;
 
@@ -38,7 +39,9 @@ public class TestConsolePrint {
 		TreeMap map = new TreeMap(test1, test2, test3);
 		BasicFrame framcia = new BasicFrame();
 		framcia.setVisible(true);
-		MinimalSpanningTree tree = new MinimalSpanningTree(map.getNetwork(), 10);
+		//MinimalSpanningTree tree = new MinimalSpanningTree(map.getNetwork(), 10);
+		IndexCalculus index = new IndexCalculus(10,2,5,5);
+		System.out.println(index.calc());
 		long elapsedTime = System.currentTimeMillis() - start;
 		
 		
