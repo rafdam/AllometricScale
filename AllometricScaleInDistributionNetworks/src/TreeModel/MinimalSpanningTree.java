@@ -29,21 +29,6 @@ private EdgeList edges = new EdgeList();
 			}
 			//System.out.println("-------------------------------");
 		}
-		/*
-		*	for (int jj = 0; jj < neighboursCount; jj++){
-		*		for (int ii = 0; ii < list.get(iterAdress).getNeighbourIndexesList().size();ii++){
-		*			tmpAdress = list.get(iterAdress).getNeighbourIndexesList().get(ii);
-		*			if (tmpHubAdresses.contains(tmpAdress)){
-		*				//go to next hub
-		*			}
-		*			else{
-		*				tmpHubAdresses.add(tmpAdress);
-		*				edges.add(new Edge(hubNumber, tmpAdress, levelCount));
-		*				adressesToCheck.add(tmpAdress);
-		*			}
-		*		}
-		*	}
-		*/		
 	}
 	
 	public int MinimalRequiredAmount(){

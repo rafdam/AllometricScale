@@ -33,7 +33,7 @@ public double hubbingProbability; //just a container to later statistics
 						map.add(new NetworkHub((short)ii, (short)jj, (short)zz));
 						try{
 							cube[ii][jj][zz] = (int) (map.getSize());
-							System.out.println(ii + " " + jj + " " + zz);
+							//System.out.println(ii + " " + jj + " " + zz);
 						}
 						catch(NullPointerException ee){
 							cube[ii][jj][zz] = maxVal;
@@ -88,7 +88,7 @@ public double hubbingProbability; //just a container to later statistics
 												//System.out.println(map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).getNeighbourIndexesList().size());
 												map.get(listIndex).addToNeighbourIndexesList(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
 												map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).addToNeighbourIndexesList(listIndex);
-												System.out.println(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
+												//System.out.println(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
 												tmpNeighboursCount = tmpNeighboursCount + 1;
 											}
 											catch(NullPointerException yyy){
@@ -110,11 +110,11 @@ public double hubbingProbability; //just a container to later statistics
 				}
 			loopCounter = loopCounter + 1;
 			if (loopCounter > siz){
-				System.out.println("Koniec Kostki, ostatni wierzchołek");
+				//System.out.println("Koniec Kostki, ostatni wierzchołek");
 				break;
 			}
 			}
-			System.out.println("+-+-+-+-+-+-+-");
+			//System.out.println("+-+-+-+-+-+-+-");
 		}
 		//System.out.println(System.currentTimeMillis() - start);
 	}
