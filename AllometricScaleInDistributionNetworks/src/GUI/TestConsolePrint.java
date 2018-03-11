@@ -25,11 +25,11 @@ public class TestConsolePrint {
 		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 		        if ("Nimbus".equals(info.getName())) {
 		            UIManager.setLookAndFeel(info.getClassName());
-		            break;
+		            //break;
 		        }
 		    }
 		} catch (Exception e) {
-		    // If Nimbus is not available, you can set the GUI to another look and feel.
+		    System.out.println("kek");
 		}
 		test1 = 10;
 		test2 = 0.70;
