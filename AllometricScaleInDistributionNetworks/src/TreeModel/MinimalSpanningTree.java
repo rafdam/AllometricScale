@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class MinimalSpanningTree {
 private EdgeList edges = new EdgeList();
 	public MinimalSpanningTree(HubList list, int hubNumber) {
-		int levelCount = 1;
 		int iterAdress = hubNumber;
 		int tmpAdress;
 		ArrayList<Integer> checkedHubAdresses = new ArrayList<Integer>(); // list of hubs reached by the network edges

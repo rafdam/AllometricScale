@@ -1,13 +1,8 @@
 package TreeModel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
-
 public class TreeMap {
 private HubList map; // 3d matrix of hubs dependent on probability
 private EdgeList edges; // list containing all the edges with their weights
-private int kNearestHubs; // value defining with how many hubs each hub gonna be connected 
 private int size; // true / false cube representing if the hub is in the spot or not
 public double hubbingProbability; //just a container to later statistics
 	public TreeMap(int siz, double prob, int neighbours) {
@@ -17,15 +12,12 @@ public double hubbingProbability; //just a container to later statistics
 		int loopCounter;
 		int tmpNeighboursCount = 0;
 		int maxVal = (siz * siz * siz) + 1;
-		int hubIndex;
 		int[][][] cube = new int[siz][siz][siz];
 		
 		size = siz;
-		kNearestHubs = neighbours;
 		hubbingProbability = prob;
 		map = new HubList();
 		edges = new EdgeList();
-		long start = System.currentTimeMillis();
 		for (int ii = 0; ii < siz; ii++){
 			for (int jj = 0; jj < siz; jj++){
 				for (int zz = 0; zz < siz; zz++){
@@ -47,8 +39,6 @@ public double hubbingProbability; //just a container to later statistics
 				}
 			}
 		}
-		//System.out.println(System.currentTimeMillis() - start);
-		start = System.currentTimeMillis();
 		//Generating k-nearest neighbours for given graph defined by HubList map and cube[][][] keeping indexes
 		for (int listIndex = 0; listIndex < map.size(); listIndex++){
 			loopCounter = 1;

@@ -1,14 +1,15 @@
 package GUI;
 
 import java.awt.Color;
-import java.awt.LayoutManager;
-
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-
 import net.miginfocom.swing.MigLayout;
 
 public class CountResultsPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ChartPointsPanel chartPoints;
 	AllometricIndexPanel indexPanel;
 	

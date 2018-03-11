@@ -1,11 +1,14 @@
 package TreeModel;
 
 import java.awt.HeadlessException;
-
-import java.awt.List;
 import java.util.ArrayList;
 
 public class HubList extends ArrayList<NetworkHub> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public HubList() throws HeadlessException {
 		super();

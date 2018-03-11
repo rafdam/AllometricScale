@@ -1,8 +1,6 @@
 package GUI;
 
 import java.awt.Color;
-import java.awt.LayoutManager;
-
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 

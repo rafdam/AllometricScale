@@ -1,6 +1,5 @@
 package TreeModel;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 public class NetworkHub {
@@ -8,7 +7,6 @@ private short xCartCoord; // coordinates defined in cartesian metric system
 private short yCartCoord;
 private short zCartCoord;
 private int level; // defines the level of the hub specified by spanning tree
-private ArrayList<NetworkHub> neighbourList; //list of nearest neighbours
 private ArrayList<Integer> neighbourIndexesList;
 	
 	public NetworkHub(short x, short y, short z) {
@@ -16,7 +14,7 @@ private ArrayList<Integer> neighbourIndexesList;
 		yCartCoord = y;
 		zCartCoord = z;
 		level = 0;
-		neighbourList = new ArrayList<NetworkHub>();
+		new ArrayList<NetworkHub>();
 		neighbourIndexesList = new ArrayList<Integer>();
 	}
 

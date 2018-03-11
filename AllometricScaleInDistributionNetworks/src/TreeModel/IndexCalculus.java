@@ -6,7 +6,6 @@ public class IndexCalculus {
 	private ArrayList<Double> logLVals;
 	private ArrayList<Double> logCVals;
 	public IndexCalculus(int startL, int jump, int jumpCount, int piece){
-		double index = 0;
 		logLVals = new ArrayList<Double>();
 		logCVals = new ArrayList<Double>();
 		int endL = startL + (jump * jumpCount);
