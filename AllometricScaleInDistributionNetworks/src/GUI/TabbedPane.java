@@ -3,6 +3,8 @@ package GUI;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import net.miginfocom.swing.MigLayout;
+
 public class TabbedPane extends JTabbedPane {
 
 	/**
@@ -13,8 +15,16 @@ public class TabbedPane extends JTabbedPane {
 	
 	public TabbedPane() {
 		simulationTab = new JPanel();		
-		addTab("Visualization", simulationTab);	
+		addTab("<html> <b>Visualization", simulationTab);	
 		chartAndCountTab = new JPanel();
-		addTab("Allometric Scalling", chartAndCountTab);
+		addTab("<html> <b>Allometric index", chartAndCountTab);
+		
+		SimulationMainPanel simulationPanel = new SimulationMainPanel();
+		simulationTab.setLayout(new MigLayout());
+		simulationTab.add(simulationPanel, "width 100%, height 100%");
+		
+		ScallingMainPanel calculusPanel = new ScallingMainPanel();
+		chartAndCountTab.setLayout(new MigLayout());
+		chartAndCountTab.add(calculusPanel, "width 100%, height 100%");
 	}
 }

@@ -1,5 +1,8 @@
 package GUI;
 
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+
 import TreeModel.MinimalSpanningTree;
 import TreeModel.TreeMap;
 
@@ -18,6 +21,16 @@ public class TestConsolePrint {
 		test2= Double.parseDouble((JOptionPane.showInputDialog("Please input P Val for test : ")));
 		test3= Short.parseShort((JOptionPane.showInputDialog("Please input K Val for test : ")));
 		*/
+		try {
+		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if ("Nimbus".equals(info.getName())) {
+		            UIManager.setLookAndFeel(info.getClassName());
+		            break;
+		        }
+		    }
+		} catch (Exception e) {
+		    // If Nimbus is not available, you can set the GUI to another look and feel.
+		}
 		test1 = 10;
 		test2 = 0.70;
 		test3 = 15;
