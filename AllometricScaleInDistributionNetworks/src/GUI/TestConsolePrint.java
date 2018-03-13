@@ -22,8 +22,12 @@ public class TestConsolePrint {
 		}
 		BasicFrame framcia = new BasicFrame();
 		framcia.setVisible(true);
-		IndexCalculus index = new IndexCalculus(8,1,30,5);
-		System.out.println(index.calc());
+		IndexCalculus index = new IndexCalculus(8,1,10,5);
+		index.calc();
+		//framcia.getPane().getCountTab().getChart().addPointsToChart(1, 1);
+		//framcia.getPane().getCountTab().getChart().addPointsToChart(2, 2);
+		//framcia.getPane().getCountTab().getChart().repaint();
+		//framcia.getPane().getCountTab().getChart().revalidate();
 	}
 
 }

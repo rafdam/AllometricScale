@@ -30,6 +30,7 @@ public class IndexCalculus {
 			ChartPointsTable.addRow(ii, df.format(3* Math.log10(ii)), tmpSpanTree.MinimalRequiredAmount(), df.format(Math.log10(tmpSpanTree.MinimalRequiredAmount())), tmpTreeMap.getMNTime(), tmpSpanTree.getMSTTime());
 			System.out.println("L = " + ii);
 			System.out.println("C = " + tmpSpanTree.MinimalRequiredAmount());
+			BasicFrame.getPane().getCountTab().getChart().addPointsToChart(3*Math.log10(ii), Math.log10(tmpSpanTree.MinimalRequiredAmount()));
 		}
 	}
 	
