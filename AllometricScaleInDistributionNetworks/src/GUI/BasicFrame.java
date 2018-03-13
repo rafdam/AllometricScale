@@ -1,11 +1,9 @@
 package GUI;
 
-import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 
-import GUI.TabbedPane;
 import net.miginfocom.swing.MigLayout;
 
 public class BasicFrame extends JFrame {

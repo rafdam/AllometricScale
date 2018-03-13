@@ -16,10 +16,11 @@ public class TabbedPane extends JTabbedPane {
 	ScallingMainPanel calculusPanel;
 	
 	public TabbedPane() {
-		simulationTab = new JPanel();		
-		addTab("<html> <b>Visualization", simulationTab);	
 		chartAndCountTab = new JPanel();
 		addTab("<html> <b>Allometric index", chartAndCountTab);
+		simulationTab = new JPanel();		
+		addTab("<html> <b>Visualization", simulationTab);	
+		
 		
 		simulationPanel = new SimulationMainPanel();
 		simulationTab.setLayout(new MigLayout());

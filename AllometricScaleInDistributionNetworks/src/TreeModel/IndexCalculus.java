@@ -12,7 +12,8 @@ public class IndexCalculus {
 	private ArrayList<Double> logCVals;
 	private ArrayList<Integer> LVals;
 	private ArrayList<Integer> CVals;
-	private double index;
+	private double aIndex;
+	private double bIndex;
 	public IndexCalculus(int startL, int jump, int jumpCount, int piece){
 		logLVals = new ArrayList<Double>();
 		logCVals = new ArrayList<Double>();
@@ -28,10 +29,17 @@ public class IndexCalculus {
 			CVals.add(tmpSpanTree.MinimalRequiredAmount());
 			DecimalFormat df = new DecimalFormat(".##");
 			ChartPointsTable.addRow(ii, df.format(3* Math.log10(ii)), tmpSpanTree.MinimalRequiredAmount(), df.format(Math.log10(tmpSpanTree.MinimalRequiredAmount())), tmpTreeMap.getMNTime(), tmpSpanTree.getMSTTime());
-			System.out.println("L = " + ii);
-			System.out.println("C = " + tmpSpanTree.MinimalRequiredAmount());
+			//System.out.println("L = " + ii);
+			//System.out.println("C = " + tmpSpanTree.MinimalRequiredAmount());
 			BasicFrame.getPane().getCountTab().getChart().addPointsToChart(3*Math.log10(ii), Math.log10(tmpSpanTree.MinimalRequiredAmount()));
+			if (ii > 2){
+				calc();
+				//BasicFrame.getPane().getCountTab().getChart().getLinePlot().add(3 * Math.log10(ii), bIndex * 3 * Math.log10(ii));
+				BasicFrame.getPane().getCountTab().getChart().refreshLinePlot(logLVals, aIndex, bIndex);
+				//xyDataset = xySeriesCollection;
+			}
 		}
+		
 	}
 	
 	public ArrayList<Double> getLogLVals(){
@@ -51,7 +59,7 @@ public class IndexCalculus {
 	}
 	
 	public double getIndex(){
-		return index;
+		return aIndex;
 	}
 	
 	public double calc(){
@@ -63,8 +71,8 @@ public class IndexCalculus {
 		for (int jj = 0; jj < size; jj++){
 			averageL += logLVals.get(jj);
 			averageC += logCVals.get(jj);
-			System.out.println("LOG L = " + logLVals.get(jj));
-			System.out.println("LOG C = " + logCVals.get(jj));
+			//System.out.println("LOG L = " + logLVals.get(jj));
+			//ystem.out.println("LOG C = " + logCVals.get(jj));
 		}
 		averageL = averageL / size;
 		averageC = averageC / size;
@@ -72,11 +80,12 @@ public class IndexCalculus {
 			xysum += (logLVals.get(ii) - averageL)*(logCVals.get(ii) - averageC);
 			xyQuadSum += Math.pow(logLVals.get(ii) - averageL, 2);
 		}
-		System.out.println("średnie 3*Log(L) = " + averageL);
-		System.out.println("średnie Log(C) = " + averageC);
-		index = xysum/xyQuadSum;
+		//System.out.println("średnie 3*Log(L) = " + averageL);
+		//System.out.println("średnie Log(C) = " + averageC);
+		aIndex = xysum/xyQuadSum;
+		bIndex = averageC - (aIndex * averageL);
 		DecimalFormat df2 = new DecimalFormat(".##");
-		BasicFrame.getPane().getCountTab().getResults().getIndexPanel().getLabel().setString(df2.format(index));
-		return index;
+		BasicFrame.getPane().getCountTab().getResults().getIndexPanel().getLabel().setString(df2.format(aIndex));
+		return aIndex;
 	}
 }
