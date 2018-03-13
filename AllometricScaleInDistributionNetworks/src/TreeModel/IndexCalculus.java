@@ -12,6 +12,7 @@ public class IndexCalculus {
 	private ArrayList<Double> logCVals;
 	private ArrayList<Integer> LVals;
 	private ArrayList<Integer> CVals;
+	private double index;
 	public IndexCalculus(int startL, int jump, int jumpCount, int piece){
 		logLVals = new ArrayList<Double>();
 		logCVals = new ArrayList<Double>();
@@ -19,13 +20,14 @@ public class IndexCalculus {
 		CVals = new ArrayList<Integer>();
 		int endL = startL + (jump * jumpCount);
 		for (int ii = startL; ii < endL ; ii = ii+jump){
-			MinimalSpanningTree tmpSpanTree = new MinimalSpanningTree(new TreeMap(ii, 0.7,15).getNetwork(), (int)(ii * ii * ii * 0.7 / (piece + 1)));
+			TreeMap tmpTreeMap = new TreeMap(ii, 0.7, 15);
+			MinimalSpanningTree tmpSpanTree = new MinimalSpanningTree(tmpTreeMap.getNetwork(), (int)(ii * ii * ii * 0.7 / (piece + 1)));
 			logLVals.add(3 * Math.log10(ii));
 			logCVals.add((Math.log10(tmpSpanTree.MinimalRequiredAmount())));
 			LVals.add(ii);
 			CVals.add(tmpSpanTree.MinimalRequiredAmount());
 			DecimalFormat df = new DecimalFormat(".##");
-			ChartPointsTable.addRow(ii, df.format(3* Math.log10(ii)), tmpSpanTree.MinimalRequiredAmount(), df.format(Math.log10(tmpSpanTree.MinimalRequiredAmount())));
+			ChartPointsTable.addRow(ii, df.format(3* Math.log10(ii)), tmpSpanTree.MinimalRequiredAmount(), df.format(Math.log10(tmpSpanTree.MinimalRequiredAmount())), tmpTreeMap.getMNTime(), tmpSpanTree.getMSTTime());
 			System.out.println("L = " + ii);
 			System.out.println("C = " + tmpSpanTree.MinimalRequiredAmount());
 		}
@@ -47,8 +49,11 @@ public class IndexCalculus {
 		return CVals;
 	}
 	
+	public double getIndex(){
+		return index;
+	}
+	
 	public double calc(){
-		double index = 0;
 		double averageL = 0;
 		double averageC = 0;
 		double xysum = 0;

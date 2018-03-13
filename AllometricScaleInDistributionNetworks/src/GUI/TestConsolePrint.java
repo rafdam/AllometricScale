@@ -22,7 +22,7 @@ public class TestConsolePrint {
 		}
 		BasicFrame framcia = new BasicFrame();
 		framcia.setVisible(true);
-		IndexCalculus index = new IndexCalculus(10,2,10,5);
+		IndexCalculus index = new IndexCalculus(8,1,30,5);
 		System.out.println(index.calc());
 	}
 

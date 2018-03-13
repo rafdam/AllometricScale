@@ -5,6 +5,7 @@ private HubList map; // 3d matrix of hubs dependent on probability
 private EdgeList edges; // list containing all the edges with their weights
 private int size; // true / false cube representing if the hub is in the spot or not
 public double hubbingProbability; //just a container to later statistics
+private String MNtime;
 	public TreeMap(int siz, double prob, int neighbours) {
 		int tmpXCoord;
 		int tmpYCoord;
@@ -18,6 +19,7 @@ public double hubbingProbability; //just a container to later statistics
 		hubbingProbability = prob;
 		map = new HubList();
 		edges = new EdgeList();
+		long start = System.currentTimeMillis();
 		for (int ii = 0; ii < siz; ii++){
 			for (int jj = 0; jj < siz; jj++){
 				for (int zz = 0; zz < siz; zz++){
@@ -39,6 +41,7 @@ public double hubbingProbability; //just a container to later statistics
 				}
 			}
 		}
+		
 		//Generating k-nearest neighbours for given graph defined by HubList map and cube[][][] keeping indexes
 		for (int listIndex = 0; listIndex < map.size(); listIndex++){
 			loopCounter = 1;
@@ -75,10 +78,8 @@ public double hubbingProbability; //just a container to later statistics
 										}
 										else{
 											try{	
-												//System.out.println(map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).getNeighbourIndexesList().size());
 												map.get(listIndex).addToNeighbourIndexesList(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
 												map.get(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1).addToNeighbourIndexesList(listIndex);
-												//System.out.println(cube[tmpXCoord+ii][tmpYCoord+jj][tmpZCoord+zz] - 1);
 												tmpNeighboursCount = tmpNeighboursCount + 1;
 											}
 											catch(NullPointerException yyy){
@@ -100,14 +101,17 @@ public double hubbingProbability; //just a container to later statistics
 				}
 			loopCounter = loopCounter + 1;
 			if (loopCounter > siz){
-				//System.out.println("Koniec Kostki, ostatni wierzchołek");
 				break;
 			}
 			}
-			//System.out.println("+-+-+-+-+-+-+-");
 		}
-		//System.out.println(System.currentTimeMillis() - start);
+		MNtime = Long.toString(System.currentTimeMillis() - start);
 	}
+	
+	public String getMNTime(){
+		return MNtime;
+	}
+	
 	
 	public HubList getNetwork(){
 		return map;

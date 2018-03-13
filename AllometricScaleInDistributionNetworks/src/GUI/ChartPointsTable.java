@@ -13,7 +13,7 @@ public class ChartPointsTable extends JTable {
 	static DefaultTableModel model;
 	//static ChargesList StationaryChargesList = new ChargesList();
 	public ChartPointsTable() {
-		Object[] columns = {"L","3Log(L)","C","Log(C)"}; 
+		Object[] columns = {"L","3Log(L)","C","Log(C)", "MNT time", "MST time"}; 
 	    model = new DefaultTableModel(); 
 	    model.setColumnIdentifiers(columns);
 	    //model.addRow(new Object[]{1,2,3,4});
@@ -21,7 +21,7 @@ public class ChartPointsTable extends JTable {
 	    setDefaultEditor(Object.class, null);
 	}
 	
-	public static void addRow(int a, String b, int c, String d){
-		model.addRow(new Object[]{a,b,c,d});
+	public static void addRow(int a, String b, int c, String d, String MNTt, String MSTt){
+		model.addRow(new Object[]{a,b,c,d, MNTt, MSTt});
 	}
 }
